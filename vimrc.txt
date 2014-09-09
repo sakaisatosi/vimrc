@@ -2,7 +2,6 @@
 " NeoBundleInstall! プラグインの更新
 " NeoBundleClean    プラグインの削除
 
-
 filetype off
 
 if has('vim_starting')
