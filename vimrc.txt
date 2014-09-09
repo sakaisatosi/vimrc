@@ -1,0 +1,99 @@
+" NeoBundleInstall  プラグイン新規追加時のインストール
+" NeoBundleInstall! プラグインの更新
+" NeoBundleClean    プラグインの削除
+
+
+filetype off
+
+if has('vim_starting')
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'thinca/vim-quickrun'
+" NeoBundle 'YnkRing.vim'
+" NeoBundle 'mbbill/undotree'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'vim-ruby/vim-ruby'	"rubyのオムニ補完 <C-o>で補完候補表示、<C-n>で次の候補、<C-p>で前の候補、<C-y>で決定。
+
+" for snippets
+imap <expr><C-k> neocomplcache#sources#snippets_complete#expandable( ?"\<Plug>(neocomplcache_snippets_expand)" : pumvisible( ? "\<C-n>" : "\<TAB>"
+smap <C-k> <Plug>(neocomplcache_snippets_expand)))
+
+NeoBundle 'scrooloose/nerdtree'	"NerdTree
+
+" ===== neocomplcache ===== 
+ inoremap <expr><TAB> pumvisible() ? "\<Down>" : "\<TAB>"
+ inoremap <expr><C-Tab> pumvisible() ? "\<Up>" : "\<C-Tab>"
+
+filetype plugin on  "最後にplugin onにしておく
+
+set t_Co=256
+
+set mouse=a "マウスを有効に
+
+set incsearch	"インクリメンタルサーチを行う
+
+set wildmenu wildmode=list:full	"タブ補完をする
+
+set softtabstop=4   "Tabキー押下時ｎカーソル移動幅
+
+syntax on   "シンタックスオン
+
+set cursorline	"カーソルライン表示
+
+set number  "行番号を表示
+
+set laststatus=2    "ステータスラインを常に表示
+
+set statusline=%F%r%h%=	"ステータスラインに表示する情報
+
+set autoindent	"新しい行を直前の行と同じインデントにする
+
+" set cindent	"オートインデントを有効にする
+
+set noswapfile	"スワップファイルを作成しない
+
+set nobackup	"バックアップをとらない
+
+set scrolloff=5	"スクロールする時に下が見えるようにする
+
+set vb t_vb=	"ビープ音を消す
+
+set ignorecase	"小文字の検索でも大文字も見つかるようにする
+
+set smartcase	"ただし大文字も含めた検索の場合はその通りに検索する
+
+" OSのクリップボードを使う
+set clipboard+=unnamed
+set clipboard=unnamed
+
+colorscheme zenburn "カラースキームをzenburnに
+
+set ruler   "ルーラーを表示
+
+" 編集中のファイル名を表示
+" set title
+
+set showcmd "入力中のコマンドを表示
+
+set showmatch	"閉じ括弧の入力時に対応する括弧を表示
+
+" ===== move cursor left when parentheses defined ===== 
+inoremap {} {}<Left>
+inoremap [] []<Left>
+inoremap () ()<Left>
+inoremap "" ""<Left>
+inoremap '' ''<Left>
+inoremap <> <><Left>
+
+cnoremap {} {}<Left>
+cnoremap [] []<Left>
+cnoremap () ()<Left>
+cnoremap "" ""<Left>
+cnoremap '' ''<Left>
+cnoremap <> <><Left>
+
